@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import Marquee from '@/components/Marquee'
+// import Marquee from '@/components/Marquee'
+import TargetAudienceSection from '@/components/TargetAudienceSection'
 import About from '@/components/About'
 import Services from '@/components/Services'
 import Pricing from '@/components/Pricing'
@@ -13,7 +14,8 @@ export default function Home() {
     <main className="min-h-screen overflow-hidden">
       <Header />
       <Hero />
-      <Marquee />
+      {/* <Marquee /> */}
+      <TargetAudienceSection />
       <About />
       <Services />
       <Pricing />
@@ -21,5 +23,5 @@ export default function Home() {
       <Contact />
       <Footer />
     </main>
-  )
+  );
 }

@@ -10,36 +10,31 @@ export default function Testimonials() {
       name: 'Yinka A.',
       role: 'Content Strategist & Freelancer',
       content: "Seb's Hub is my productivity plug. As a content strategist, I've worked from several spaces but this one gets it right — good vibes, no noise, and always light.",
-      rating: 5,
-      image: '👩🏾‍💻'
+      rating: 5
     },
     {
       name: 'Dami O.',
       role: 'Brand Coach',
       content: "I hosted my first paid training here, and it was seamless. The space has everything you need — and nothing you don't.",
-      rating: 5,
-      image: '👨🏾‍🏫'
+      rating: 5
     },
     {
       name: 'Bolu F.',
       role: 'UI/UX Designer',
       content: "As someone who works better at night, finding a 6PM–6AM coworking setup is gold. No interruptions, stable light, and total peace.",
-      rating: 5,
-      image: '👨🏾‍🎨'
+      rating: 5
     },
     {
       name: 'Rita A.',
       role: 'Copywriter',
       content: "I started coming to Seb's in March. I've since launched a digital product, met a collaborator, and finally found peace to work at night!",
-      rating: 5,
-      image: '✍🏾'
+      rating: 5
     },
     {
       name: 'Josh O.',
       role: 'Creative Coach',
       content: "I teach design. Hosting my classes here gives my students real comfort, fast Wi-Fi, and zero interruptions. Highly recommended.",
-      rating: 5,
-      image: '👨🏾‍🏫'
+      rating: 5
     }
   ]
 
@@ -74,8 +69,6 @@ export default function Testimonials() {
         {/* Main Testimonial Display */}
         <div className="relative max-w-4xl mx-auto mb-12">
           <div className="bg-gray-50 rounded-3xl p-8 md:p-12 text-center">
-            <div className="text-6xl mb-6">{testimonials[currentTestimonial].image}</div>
-            
             <blockquote className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
               &ldquo;{testimonials[currentTestimonial].content}&rdquo;
             </blockquote>
@@ -141,7 +134,6 @@ export default function Testimonials() {
               }`}
               onClick={() => setCurrentTestimonial(index)}
             >
-              <div className="text-3xl mb-3">{testimonial.image}</div>
               <p className="text-gray-700 mb-4 text-sm leading-relaxed">
                 &ldquo;{testimonial.content}&rdquo;
               </p>
