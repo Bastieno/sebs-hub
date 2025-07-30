@@ -40,12 +40,14 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              href="#book"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
             >
               Book Now
-            </Link>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -80,12 +82,14 @@ export default function Header() {
               <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
                 Contact
               </Link>
-              <Link
-                href="#book"
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300"
               >
                 Book Now
-              </Link>
+              </a>
             </div>
           </div>
         )}

@@ -68,7 +68,7 @@ export default function TargetAudienceSection() {
         <div className="mb-4">
           <Badge
             variant="outline"
-            className="text-[#dc3b3f] border-[#dc3b3f] mb-4 px-4 py-2"
+            className="text-amber-600 border-amber-600 mb-4 px-4 py-2"
           >
             MORE THAN CO-WORKING
           </Badge>
@@ -77,7 +77,7 @@ export default function TargetAudienceSection() {
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12">
           The perfect ambience to do work you love.{" "}
           <span className="text-gray-500">We create spaces for</span>
-          <span className="text-[#dc3b3f]">.</span>
+          <span className="text-amber-600">.</span>
         </h2>
       </div>
 

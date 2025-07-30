@@ -69,7 +69,7 @@ export default function Contact() {
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">
                       Visit Us
                     </h4>
-                    <p className="text-gray-600">Bodija, Ibadan, Oyo State</p>
+                    <p className="text-gray-600">No 32, Awolowo Avenue, Bodija, Ibadan, Oyo State</p>
                     <p className="text-gray-600">Nigeria</p>
                   </div>
                 </div>

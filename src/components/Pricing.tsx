@@ -134,8 +134,10 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <Link
-                  href="#book"
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
                     slot.popular
                       ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:shadow-lg hover:scale-105'
@@ -143,7 +145,7 @@ export default function Pricing() {
                   }`}
                 >
                   Book This Slot
-                </Link>
+                </a>
               </div>
             ))}
           </div>
@@ -186,8 +188,10 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <Link
-                  href="#membership"
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfzkOJ5328YG_NK6IsnRdWWYW-3zRHUZZ9WV80_SI_srMHGKw/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
                     plan.popular
                       ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:shadow-lg hover:scale-105'
@@ -195,7 +199,7 @@ export default function Pricing() {
                   }`}
                 >
                   Join as Member
-                </Link>
+                </a>
               </div>
             ))}
           </div>
@@ -208,12 +212,14 @@ export default function Pricing() {
             Get a complimentary drink and branded merchandise on your first visit. 
             Plus, refer a friend and both of you get 10% off your next booking!
           </p>
-          <Link
-            href="#book"
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             Claim Your Bonus
-          </Link>
+          </a>
         </div>
       </div>
     </section>
