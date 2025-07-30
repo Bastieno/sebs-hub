@@ -69,8 +69,15 @@ export default function Contact() {
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">
                       Visit Us
                     </h4>
-                    <p className="text-gray-600">No 32, Awolowo Avenue, Bodija, Ibadan, Oyo State</p>
-                    <p className="text-gray-600">Nigeria</p>
+                    <a
+                      href="https://www.google.com/maps/place/Sebs+Hub/@7.41678,3.9045768,17z/data=!3m1!4b1!4m6!3m5!1s0x10398d0038eb366d:0xd1cd1cde7c95f7ac!8m2!3d7.41678!4d3.9045768!16s%2Fg%2F11x82ytchf?entry=ttu&g_ep=EgoyMDI1MDMyNC4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-amber-600 hover:text-amber-700 cursor-pointer transition-colors duration-200"
+                    >
+                      <p>No 32, Awolowo Avenue, Bodija, Ibadan, Oyo State</p>
+                      <p>Nigeria</p>
+                    </a>
                   </div>
                 </div>
 
@@ -100,7 +107,9 @@ export default function Contact() {
                       Phone/WhatsApp
                     </h4>
                     <a
-                      href="tel:+234"
+                      href="https://wa.me/2348107180312"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-amber-600 hover:text-amber-700"
                     >
                       +234 810 718 0312
@@ -122,12 +131,16 @@ export default function Contact() {
                     <div className="space-y-1">
                       <a
                         href="https://www.instagram.com/sebshub_co"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block text-amber-600 hover:text-amber-700"
                       >
                         @sebshub_co on Instagram
                       </a>
                       <a
                         href="https://x.com/sebshub_co"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block text-amber-600 hover:text-amber-700"
                       >
                         @sebshub_co on Twitter
