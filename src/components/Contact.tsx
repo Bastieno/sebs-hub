@@ -49,6 +49,28 @@ export default function Contact() {
     }
   })
 
+  // Check for URL parameters to auto-select inquiry type
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const inquiryType = urlParams.get('inquiryType')
+    if (inquiryType === 'story') {
+      setValue('inquiryType', 'story', { shouldValidate: true })
+    }
+  }, [setValue])
+
+  // Listen for custom event from "Share Your Story" button
+  useEffect(() => {
+    const handleStoryButtonClick = () => {
+      setValue('inquiryType', 'story', { shouldValidate: true })
+    }
+
+    window.addEventListener('storyButtonClicked', handleStoryButtonClick)
+    
+    return () => {
+      window.removeEventListener('storyButtonClicked', handleStoryButtonClick)
+    }
+  }, [setValue])
+
   // Initialize EmailJS from environment variables
   const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
   const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
@@ -148,8 +170,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className="text-amber-600 hover:text-amber-700 cursor-pointer transition-colors duration-200"
                     >
-                      <p>No 32, Awolowo Avenue, Bodija, Ibadan, Oyo State</p>
-                      <p>Nigeria</p>
+                      <p>No 32, Awolowo Avenue, Bodija, Ibadan, Oyo State, Nigeria</p>
                     </a>
                   </div>
                 </div>
@@ -256,7 +277,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
+          <div id="contact-form" className="bg-white rounded-2xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               Send us a Message
             </h3>
@@ -344,6 +365,7 @@ export default function Contact() {
                     <SelectItem value="partnership">
                       Partnership/Collaboration
                     </SelectItem>
+                    <SelectItem value="story">Share a story</SelectItem>
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>

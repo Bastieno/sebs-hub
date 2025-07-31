@@ -159,7 +159,26 @@ export default function Testimonials() {
             We&apos;d love to hear about your experience and feature your success story.
           </p>
           <a
-            href="mailto:hello@sebshub.com?subject=My Seb's Hub Story"
+            href="#contact-form?inquiryType=story"
+            onClick={(e) => {
+              e.preventDefault()
+              // Add URL parameter and navigate to contact form
+              const url = new URL(window.location.href)
+              url.searchParams.set('inquiryType', 'story')
+              window.history.pushState({}, '', url.toString())
+              
+              // Scroll directly to the contact form
+              const contactForm = document.getElementById('contact-form')
+              if (contactForm) {
+                contactForm.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                })
+              }
+              
+              // Trigger a custom event to notify the Contact component
+              window.dispatchEvent(new CustomEvent('storyButtonClicked'))
+            }}
             className="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             Share Your Story
