@@ -182,7 +182,7 @@ export default function Footer() {
         {/* Floating CTA */}
         <div className="fixed bottom-6 right-6 z-50">
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+            href="https://forms.gle/X6XRufwUn7dJrNf76"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 flex items-center space-x-2"

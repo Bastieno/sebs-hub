@@ -1,42 +1,115 @@
 'use client'
 
-import { useState } from 'react'
-import { MapPin, Mail, Phone, Twitter, Instagram, Clock } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import emailjs from '@emailjs/browser'
+import { MapPin, Mail, Phone, Twitter, Instagram, Clock, Loader2, CheckCircle, XCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
+// Zod validation schema
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters').max(50, 'Name must be less than 50 characters'),
+  email: z.string().email('Please enter a valid email address'),
+  phone: z.string().optional().refine((val) => {
+    if (!val) return true // Optional field
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/
+    return phoneRegex.test(val.replace(/[\s\-\(\)]/g, ''))
+  }, 'Please enter a valid phone number'),
+  inquiryType: z.string().min(1, 'Please select an inquiry type'),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(1000, 'Message must be less than 1000 characters')
+})
+
+type ContactFormData = z.infer<typeof contactSchema>
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    inquiryType: '',
-    message: ''
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+    reset
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      inquiryType: '',
+      message: ''
+    }
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    // You can integrate with your preferred form handling service
-  }
+  // Initialize EmailJS from environment variables
+  const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
+  const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
+  const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // Prepare email template parameters
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        phone: data.phone || 'Not provided',
+        inquiry_type: data.inquiryType,
+        message: data.message,
+        to_email: 'sebastienohub@gmail.com',
+        time: new Date().toLocaleString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZoneName: 'short'
+        })
+      }
+
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      )
+
+      setSubmitStatus('success')
+      reset() // Reset form after successful submission
+    } catch (error) {
+      console.error('Error sending email:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleSelectChange = (value: string) => {
-    setFormData({
-      ...formData,
-      inquiryType: value
-    })
+    setValue('inquiryType', value, { shouldValidate: true })
   }
+
+  // Auto-dismiss alerts after 5 seconds
+  useEffect(() => {
+    if (submitStatus === 'success' || submitStatus === 'error') {
+      const timer = setTimeout(() => {
+        setSubmitStatus('idle')
+      }, 5000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [submitStatus])
 
   return (
     <section id="contact" className="py-20 bg-gray-50">
@@ -188,32 +261,57 @@ export default function Contact() {
               Send us a Message
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Success/Error Messages */}
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <p className="text-green-800 font-medium">
+                    Message sent successfully! We&apos;ll get back to you soon.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <XCircle className="w-5 h-5 text-red-600" />
+                  <p className="text-red-800 font-medium">
+                    Failed to send message. Please try again or contact us directly.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name *</Label>
                   <Input
                     id="name"
-                    name="name"
                     type="text"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
                     placeholder="Your full name"
+                    {...register('name')}
+                    className={errors.name ? 'border-red-500' : ''}
                   />
+                  {errors.name && (
+                    <p className="text-sm text-red-600">{errors.name.message}</p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="email">Email *</Label>
                   <Input
                     id="email"
-                    name="email"
                     type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
                     placeholder="your@email.com"
+                    {...register('email')}
+                    className={errors.email ? 'border-red-500' : ''}
                   />
+                  {errors.email && (
+                    <p className="text-sm text-red-600">{errors.email.message}</p>
+                  )}
                 </div>
               </div>
 
@@ -221,18 +319,20 @@ export default function Contact() {
                 <Label htmlFor="phone">Phone Number</Label>
                 <Input
                   id="phone"
-                  name="phone"
                   type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
                   placeholder="+234 XXX XXX XXXX"
+                  {...register('phone')}
+                  className={errors.phone ? 'border-red-500' : ''}
                 />
+                {errors.phone && (
+                  <p className="text-sm text-red-600">{errors.phone.message}</p>
+                )}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="inquiryType">What do you need? *</Label>
-                <Select onValueChange={handleSelectChange} required>
-                  <SelectTrigger>
+                <Select onValueChange={handleSelectChange} value={watch('inquiryType')}>
+                  <SelectTrigger className={`w-full ${errors.inquiryType ? 'border-red-500' : ''}`}>
                     <SelectValue placeholder="Select an option" />
                   </SelectTrigger>
                   <SelectContent>
@@ -247,27 +347,39 @@ export default function Contact() {
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
+                {errors.inquiryType && (
+                  <p className="text-sm text-red-600">{errors.inquiryType.message}</p>
+                )}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="message">Message *</Label>
                 <Textarea
                   id="message"
-                  name="message"
-                  required
                   rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
                   placeholder="Tell us more about your inquiry..."
+                  {...register('message')}
+                  className={errors.message ? 'border-red-500' : ''}
                 />
+                {errors.message && (
+                  <p className="text-sm text-red-600">{errors.message.message}</p>
+                )}
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 size="lg"
               >
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
               </Button>
             </form>
           </div>

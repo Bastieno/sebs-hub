@@ -1,14 +1,35 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const isMembershipPage = pathname === '/membership'
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <header ref={menuRef} className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -20,28 +41,30 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="#about" className="text-gray-700 hover:text-amber-600 transition-colors">
-              About
-            </Link>
-            <Link href="#services" className="text-gray-700 hover:text-amber-600 transition-colors">
-              Services
-            </Link>
-            <Link href="#pricing" className="text-gray-700 hover:text-amber-600 transition-colors">
-              Pricing
-            </Link>
-            <Link href="#testimonials" className="text-gray-700 hover:text-amber-600 transition-colors">
-              Testimonials
-            </Link>
-            <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
-              Contact
-            </Link>
-          </nav>
+          {!isMembershipPage && (
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="#about" className="text-gray-700 hover:text-amber-600 transition-colors">
+                About
+              </Link>
+              <Link href="#services" className="text-gray-700 hover:text-amber-600 transition-colors">
+                Services
+              </Link>
+              <Link href="#pricing" className="text-gray-700 hover:text-amber-600 transition-colors">
+                Pricing
+              </Link>
+              <Link href="#testimonials" className="text-gray-700 hover:text-amber-600 transition-colors">
+                Testimonials
+              </Link>
+              <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
+                Contact
+              </Link>
+            </nav>
+          )}
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+              href="https://forms.gle/X6XRufwUn7dJrNf76"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
@@ -67,29 +90,64 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <Link href="#about" className="text-gray-700 hover:text-amber-600 transition-colors">
-                About
-              </Link>
-              <Link href="#services" className="text-gray-700 hover:text-amber-600 transition-colors">
-                Services
-              </Link>
-              <Link href="#pricing" className="text-gray-700 hover:text-amber-600 transition-colors">
-                Pricing
-              </Link>
-              <Link href="#testimonials" className="text-gray-700 hover:text-amber-600 transition-colors">
-                Testimonials
-              </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
-                Contact
-              </Link>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300"
-              >
-                Book Now
-              </a>
+              {isMembershipPage ? (
+                // Simplified menu for membership page
+                <Link 
+                  href="/" 
+                  className="text-gray-700 hover:text-amber-600 transition-colors font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Home
+                </Link>
+              ) : (
+                // Full menu for home page
+                <>
+                  <Link 
+                    href="#about" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    About
+                  </Link>
+                  <Link 
+                    href="#services" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Services
+                  </Link>
+                  <Link 
+                    href="#pricing" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Pricing
+                  </Link>
+                  <Link 
+                    href="#testimonials" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Testimonials
+                  </Link>
+                  <Link 
+                    href="#contact" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                  <a
+                    href="https://forms.gle/X6XRufwUn7dJrNf76"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Book Now
+                  </a>
+                </>
+              )}
             </div>
           </div>
         )}

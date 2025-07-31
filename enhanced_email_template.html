@@ -1,0 +1,87 @@
+<div style="font-family: system-ui, sans-serif, Arial; font-size: 12px; max-width: 600px; margin: 0 auto;">
+  <!-- Header -->
+  <div style="background: linear-gradient(135deg, #f59e0b, #ea580c); padding: 20px; border-radius: 8px 8px 0 0; color: white;">
+    <h2 style="margin: 0; font-size: 20px; font-weight: bold;">New Contact Form Submission</h2>
+    <p style="margin: 5px 0 0 0; opacity: 0.9;">A message from {{from_name}} has been received via Sebs Hub contact form.</p>
+  </div>
+
+  <!-- Main Content -->
+  <div style="background: white; padding: 20px; border: 1px solid #e5e7eb; border-top: none;">
+    <!-- Contact Information Section -->
+    <div style="background: #f8fafc; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+      <h3 style="margin: 0 0 15px 0; color: #1f2937; font-size: 16px; font-weight: 600;">Contact Information</h3>
+      
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 8px 0; width: 120px; vertical-align: top;">
+            <strong style="color: #374151;">Name:</strong>
+          </td>
+          <td style="padding: 8px 0; color: #1f2937;">{{from_name}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px 0; vertical-align: top;">
+            <strong style="color: #374151;">Email:</strong>
+          </td>
+          <td style="padding: 8px 0;">
+            <a href="mailto:{{from_email}}" style="color: #f59e0b; text-decoration: none;">{{from_email}}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 8px 0; vertical-align: top;">
+            <strong style="color: #374151;">Phone:</strong>
+          </td>
+          <td style="padding: 8px 0; color: #1f2937;">{{phone}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px 0; vertical-align: top;">
+            <strong style="color: #374151;">Inquiry Type:</strong>
+          </td>
+          <td style="padding: 8px 0;">
+            <span style="background: #fef3c7; color: #92400e; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500;">
+              {{inquiry_type}}
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Message Section -->
+    <div style="margin-bottom: 20px;">
+      <h3 style="margin: 0 0 10px 0; color: #1f2937; font-size: 16px; font-weight: 600;">Message</h3>
+      <div style="background: #f9fafb; border-left: 4px solid #f59e0b; padding: 15px; border-radius: 0 6px 6px 0;">
+        <p style="margin: 0; color: #374151; line-height: 1.6; white-space: pre-wrap;">{{message}}</p>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div style="background: #f0f9ff; padding: 15px; border-radius: 6px; border: 1px solid #e0f2fe;">
+      <h4 style="margin: 0 0 10px 0; color: #0c4a6e; font-size: 14px;">Quick Actions</h4>
+      <table style="border-collapse: collapse;">
+        <tr>
+          <td style="padding: 0; vertical-align: top;">
+            <a href="mailto:{{from_email}}?subject=Re: Your inquiry about {{inquiry_type}}" 
+               style="background: #f59e0b; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500; display: inline-block;">
+              Reply via Email
+            </a>
+          </td>
+          <td style="padding: 0 0 0 10px; vertical-align: top;">
+            <a href="https://wa.me/{{phone}}" 
+               style="background: #10b981; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500; display: inline-block;">
+              WhatsApp
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="background: #f9fafb; padding: 15px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; text-align: center;">
+    <p style="margin: 0; color: #6b7280; font-size: 11px;">
+      Received on {{time}} | Sebs Hub Contact Form
+    </p>
+    <p style="margin: 5px 0 0 0; color: #9ca3af; font-size: 10px;">
+      This message was automatically generated from the Sebs Hub website contact form.
+    </p>
+  </div>
+</div>
