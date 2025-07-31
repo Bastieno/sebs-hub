@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import emailjs from '@emailjs/browser'
-import { MapPin, Mail, Phone, Twitter, Instagram, Clock, Loader2 } from 'lucide-react'
+import { MapPin, Mail, Phone, Twitter, Instagram, Clock, Loader2, CheckCircle, XCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -99,6 +99,17 @@ export default function Contact() {
   const handleSelectChange = (value: string) => {
     setValue('inquiryType', value, { shouldValidate: true })
   }
+
+  // Auto-dismiss alerts after 5 seconds
+  useEffect(() => {
+    if (submitStatus === 'success' || submitStatus === 'error') {
+      const timer = setTimeout(() => {
+        setSubmitStatus('idle')
+      }, 5000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [submitStatus])
 
   return (
     <section id="contact" className="py-20 bg-gray-50">
@@ -253,17 +264,23 @@ export default function Contact() {
             {/* Success/Error Messages */}
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-800 font-medium">
-                  ✅ Message sent successfully! We&apos;ll get back to you soon.
-                </p>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <p className="text-green-800 font-medium">
+                    Message sent successfully! We&apos;ll get back to you soon.
+                  </p>
+                </div>
               </div>
             )}
 
             {submitStatus === 'error' && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-800 font-medium">
-                  ❌ Failed to send message. Please try again or contact us directly.
-                </p>
+                <div className="flex items-center space-x-2">
+                  <XCircle className="w-5 h-5 text-red-600" />
+                  <p className="text-red-800 font-medium">
+                    Failed to send message. Please try again or contact us directly.
+                  </p>
+                </div>
               </div>
             )}
 
