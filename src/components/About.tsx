@@ -122,7 +122,7 @@ export default function About() {
         </div>
 
         {/* Mission Statement */}
-        <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-3xl p-8 md:p-12 text-center text-white">
+        <div className="hero-gradient rounded-3xl p-8 md:p-12 text-center text-white">
           <h3 className="text-3xl md:text-4xl font-bold mb-6">
             What if people had space that supported their ambition and
             productivity?

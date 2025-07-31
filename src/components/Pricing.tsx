@@ -175,7 +175,7 @@ export default function Pricing() {
           </div>
 
           {/* Special Team Night Plan */}
-          <div className="mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-center text-white">
+          <div className="mt-12 hero-gradient rounded-2xl p-8 text-center text-white">
             <h4 className="text-2xl font-bold mb-4">
               🌙 Special Team Night Plan
             </h4>
@@ -189,7 +189,7 @@ export default function Pricing() {
                 href="https://forms.gle/X6XRufwUn7dJrNf76"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="inline-block bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
                 Contact for Pricing
               </a>
@@ -265,7 +265,7 @@ export default function Pricing() {
         </div>
 
         {/* Special Offer */}
-        <div className="mt-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl p-8 text-center text-white">
+        <div className="mt-16 hero-gradient rounded-2xl p-8 text-center text-white">
           <h3 className="text-2xl font-bold mb-4">
             First-Time Visitor Bonus! 🎉
           </h3>
