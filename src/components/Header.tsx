@@ -2,10 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const isMembershipPage = pathname === '/membership'
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
@@ -20,23 +23,25 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="#about" className="text-gray-700 hover:text-amber-600 transition-colors">
-              About
-            </Link>
-            <Link href="#services" className="text-gray-700 hover:text-amber-600 transition-colors">
-              Services
-            </Link>
-            <Link href="#pricing" className="text-gray-700 hover:text-amber-600 transition-colors">
-              Pricing
-            </Link>
-            <Link href="#testimonials" className="text-gray-700 hover:text-amber-600 transition-colors">
-              Testimonials
-            </Link>
-            <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
-              Contact
-            </Link>
-          </nav>
+          {!isMembershipPage && (
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="#about" className="text-gray-700 hover:text-amber-600 transition-colors">
+                About
+              </Link>
+              <Link href="#services" className="text-gray-700 hover:text-amber-600 transition-colors">
+                Services
+              </Link>
+              <Link href="#pricing" className="text-gray-700 hover:text-amber-600 transition-colors">
+                Pricing
+              </Link>
+              <Link href="#testimonials" className="text-gray-700 hover:text-amber-600 transition-colors">
+                Testimonials
+              </Link>
+              <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
+                Contact
+              </Link>
+            </nav>
+          )}
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
@@ -67,29 +72,43 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <Link href="#about" className="text-gray-700 hover:text-amber-600 transition-colors">
-                About
-              </Link>
-              <Link href="#services" className="text-gray-700 hover:text-amber-600 transition-colors">
-                Services
-              </Link>
-              <Link href="#pricing" className="text-gray-700 hover:text-amber-600 transition-colors">
-                Pricing
-              </Link>
-              <Link href="#testimonials" className="text-gray-700 hover:text-amber-600 transition-colors">
-                Testimonials
-              </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
-                Contact
-              </Link>
-              <a
-                href="https://forms.gle/X6XRufwUn7dJrNf76"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300"
-              >
-                Book Now
-              </a>
+              {isMembershipPage ? (
+                // Simplified menu for membership page
+                <Link 
+                  href="/" 
+                  className="text-gray-700 hover:text-amber-600 transition-colors font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Home
+                </Link>
+              ) : (
+                // Full menu for home page
+                <>
+                  <Link href="#about" className="text-gray-700 hover:text-amber-600 transition-colors">
+                    About
+                  </Link>
+                  <Link href="#services" className="text-gray-700 hover:text-amber-600 transition-colors">
+                    Services
+                  </Link>
+                  <Link href="#pricing" className="text-gray-700 hover:text-amber-600 transition-colors">
+                    Pricing
+                  </Link>
+                  <Link href="#testimonials" className="text-gray-700 hover:text-amber-600 transition-colors">
+                    Testimonials
+                  </Link>
+                  <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
+                    Contact
+                  </Link>
+                  <a
+                    href="https://forms.gle/X6XRufwUn7dJrNf76"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300"
+                  >
+                    Book Now
+                  </a>
+                </>
+              )}
             </div>
           </div>
         )}

@@ -1,5 +1,6 @@
 import { Check, Star, Zap, Clock, Users, Shield } from 'lucide-react'
 import Link from 'next/link'
+import Header from '@/components/Header'
 
 export default function MembershipPage() {
   const membershipPlans = [
@@ -42,20 +43,7 @@ export default function MembershipPage() {
 
   return (
     <main className="min-h-screen overflow-hidden">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">S</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">
-                Seb&apos;s Hub
-              </span>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Membership Hero Section */}
       <section className="relative min-[60vh] flex items-center justify-center hero-gradient overflow-hidden pt-32 pb-4">
