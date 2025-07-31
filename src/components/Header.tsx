@@ -41,7 +41,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+              href="https://forms.gle/X6XRufwUn7dJrNf76"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
@@ -83,7 +83,7 @@ export default function Header() {
                 Contact
               </Link>
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+                href="https://forms.gle/X6XRufwUn7dJrNf76"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300"

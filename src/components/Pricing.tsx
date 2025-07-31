@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Check } from 'lucide-react'
 
 export default function Pricing() {
@@ -135,7 +134,7 @@ export default function Pricing() {
                 </ul>
 
                 <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+                  href="https://forms.gle/X6XRufwUn7dJrNf76"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
@@ -213,7 +212,7 @@ export default function Pricing() {
             Plus, refer a friend and both of you get 10% off your next booking!
           </p>
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+            href="https://forms.gle/X6XRufwUn7dJrNf76"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
