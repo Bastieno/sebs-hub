@@ -232,7 +232,7 @@ export default function Contact() {
               <div className="space-y-2">
                 <Label htmlFor="inquiryType">What do you need? *</Label>
                 <Select onValueChange={handleSelectChange} required>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select an option" />
                   </SelectTrigger>
                   <SelectContent>
