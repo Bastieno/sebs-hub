@@ -33,7 +33,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSer6t1mmPg6iAs-s2DKDKJMMa_BNFEu-Bg-2ZIa1PU2F2cXvw/viewform"
+              href="https://forms.gle/X6XRufwUn7dJrNf76"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"

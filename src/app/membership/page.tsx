@@ -14,7 +14,6 @@ export default function MembershipPage() {
         'Consistent, dedicated workspace during your preferred hours',
         'High-speed Wi-Fi and power outlets',
         'Comfortable seating and work environment',
-        'Light refreshments included',
         'Perfect for established routines and specific peak productivity times'
       ],
       icon: Clock,
@@ -33,8 +32,6 @@ export default function MembershipPage() {
         'Reserved private work corners',
         'Priority booking for all spaces',
         'VIP member events and networking',
-        'Dedicated storage space',
-        'Member directory access',
         'The ultimate choice for maximum productivity and convenience'
       ],
       icon: Zap,
@@ -44,30 +41,67 @@ export default function MembershipPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link href="/" className="text-2xl font-bold gradient-text">
-            Seb&apos;s Hub
-          </Link>
+    <main className="min-h-screen overflow-hidden">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">S</span>
+              </div>
+              <span className="text-xl font-bold text-gray-900">
+                Seb&apos;s Hub
+              </span>
+            </Link>
+          </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-amber-500 via-orange-500 to-orange-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Monthly Access Plans
-          </h1>
-          <p className="text-xl md:text-2xl mb-4 max-w-3xl mx-auto">
-            Maximum Value, Ultimate Flexibility
-          </p>
-          <p className="text-lg opacity-90 max-w-2xl mx-auto">
-            Whether you&apos;re a solo creative, remote professional, or collaborative team seeking flexible space,
-            we have a plan tailored to your unique needs.
-          </p>
+      {/* Membership Hero Section */}
+      <section className="relative min-[60vh] flex items-center justify-center hero-gradient overflow-hidden pt-32 pb-4">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
         </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-4xl mx-auto">
+            {/* Main Headline */}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Choose Your Perfect{" "}
+              <span className="gradient-text">Workspace Plan</span>
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Maximum Value, Ultimate Flexibility — Whether you&apos;re a solo
+              creative, remote professional, or collaborative team seeking
+              flexible space.
+            </p>
+
+            {/* Value Proposition */}
+            <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+              We have a plan tailored to your unique needs and working style,
+              with the space, light, and peace of mind you deserve.
+            </p>
+          </div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-amber-500/20 rounded-full animate-float" />
+        <div
+          className="absolute top-40 right-20 w-16 h-16 bg-orange-500/20 rounded-full animate-float"
+          style={{ animationDelay: "2s" }}
+        />
+        <div
+          className="absolute bottom-40 left-20 w-12 h-12 bg-amber-400/20 rounded-full animate-float"
+          style={{ animationDelay: "4s" }}
+        />
       </section>
 
       {/* Value Proposition */}
@@ -82,10 +116,15 @@ export default function MembershipPage() {
             </div>
             <div className="max-w-4xl mx-auto">
               <p className="text-lg text-gray-700 text-center leading-relaxed">
-                <strong>Life doesn&apos;t follow a schedule, and neither should your creativity.</strong> With Premium membership, 
-                you have the freedom to seamlessly transition between morning brainstorming, afternoon collaboration, 
-                and late-night deep work — all within the same membership. Your growth, comfort, and productivity 
-                remain our top priorities.
+                <strong>
+                  Life doesn&apos;t follow a schedule, and neither should your
+                  creativity.
+                </strong>{" "}
+                With Premium membership, you have the freedom to seamlessly
+                transition between morning brainstorming, afternoon
+                collaboration, and late-night deep work — all within the same
+                membership. Your growth, comfort, and productivity remain our
+                top priorities.
               </p>
             </div>
           </div>
@@ -93,7 +132,7 @@ export default function MembershipPage() {
           {/* Membership Comparison */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {membershipPlans.map((plan, index) => {
-              const IconComponent = plan.icon
+              const IconComponent = plan.icon;
               return (
                 <div
                   key={index}
@@ -170,46 +209,58 @@ export default function MembershipPage() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-white rounded-xl shadow-lg">
               <Users className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Community Focus</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Community Focus
+              </h3>
               <p className="text-gray-600">
-                Join a thriving creative community where ideas flourish and connections bloom.
+                Join a thriving creative community where ideas flourish and
+                connections bloom.
               </p>
             </div>
             <div className="text-center p-6 bg-white rounded-xl shadow-lg">
               <Shield className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Reliable Environment</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Reliable Environment
+              </h3>
               <p className="text-gray-600">
-                Solar-powered, well-ventilated space designed for comfort and productivity.
+                Solar-powered, well-ventilated space designed for comfort and
+                productivity.
               </p>
             </div>
             <div className="text-center p-6 bg-white rounded-xl shadow-lg">
               <Zap className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Flexible Access</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Flexible Access
+              </h3>
               <p className="text-gray-600">
-                Time-based plans that ensure everyone enjoys optimal working conditions.
+                Time-based plans that ensure everyone enjoys optimal working
+                conditions.
               </p>
             </div>
           </div>
 
           {/* CTA Section */}
-          <div className="mt-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl p-8 text-center text-white">
-            <h3 className="text-3xl font-bold mb-4">Ready to Join Our Community?</h3>
+          <div className="mt-16 hero-gradient rounded-2xl p-8 text-center text-white">
+            <h3 className="text-3xl font-bold mb-4">
+              Ready to Join Our Community?
+            </h3>
             <p className="text-lg mb-6 max-w-2xl mx-auto">
-              Have questions or need guidance choosing the perfect plan? We&apos;re here to help! 
-              Reach out via WhatsApp or visit our friendly team at the front desk.
+              Have questions or need guidance choosing the perfect plan?
+              We&apos;re here to help! Reach out via WhatsApp or visit our
+              friendly team at the front desk.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="https://chat.whatsapp.com/F4mjMYARsnpKo743Bthl9K"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
               >
                 Join as Member
               </a>
               <Link
                 href="/#contact"
-                className="inline-block border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-amber-600 transition-all duration-300"
+                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300 w-full sm:w-auto"
               >
                 Contact Us
               </Link>
@@ -217,6 +268,6 @@ export default function MembershipPage() {
           </div>
         </div>
       </section>
-    </div>
-  )
+    </main>
+  );
 }
