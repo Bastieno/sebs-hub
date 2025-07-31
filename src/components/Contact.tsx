@@ -18,7 +18,7 @@ const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().optional().refine((val) => {
     if (!val) return true // Optional field
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/
+    const phoneRegex = /^[\+]?[0-9][\d]{6,15}$/
     return phoneRegex.test(val.replace(/[\s\-\(\)]/g, ''))
   }, 'Please enter a valid phone number'),
   inquiryType: z.string().min(1, 'Please select an inquiry type'),
