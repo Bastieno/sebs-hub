@@ -102,19 +102,39 @@ export default function Header() {
               ) : (
                 // Full menu for home page
                 <>
-                  <Link href="#about" className="text-gray-700 hover:text-amber-600 transition-colors">
+                  <Link 
+                    href="#about" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     About
                   </Link>
-                  <Link href="#services" className="text-gray-700 hover:text-amber-600 transition-colors">
+                  <Link 
+                    href="#services" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     Services
                   </Link>
-                  <Link href="#pricing" className="text-gray-700 hover:text-amber-600 transition-colors">
+                  <Link 
+                    href="#pricing" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     Pricing
                   </Link>
-                  <Link href="#testimonials" className="text-gray-700 hover:text-amber-600 transition-colors">
+                  <Link 
+                    href="#testimonials" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     Testimonials
                   </Link>
-                  <Link href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors">
+                  <Link 
+                    href="#contact" 
+                    className="text-gray-700 hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     Contact
                   </Link>
                   <a
@@ -122,6 +142,7 @@ export default function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full font-medium text-center hover:shadow-lg transition-all duration-300"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     Book Now
                   </a>
