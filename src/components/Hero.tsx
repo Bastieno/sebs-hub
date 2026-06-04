@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden pt-32 pb-4">
@@ -40,12 +38,14 @@ export default function Hero() {
             >
               Book Your Desk
             </a>
-            <Link
-              href="/membership"
+            <a
+              href="https://chat.whatsapp.com/F4mjMYARsnpKo743Bthl9K"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300 w-full sm:w-auto"
             >
-              Explore Membership
-            </Link>
+              Join as Member
+            </a>
           </div>
 
           {/* Quick Stats */}
@@ -55,7 +55,7 @@ export default function Hero() {
               <div className="text-gray-300">Solar-Powered</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-amber-400 mb-2">₦2K+</div>
+              <div className="text-3xl font-bold text-amber-400 mb-2">₦3K+</div>
               <div className="text-gray-300">Flexible Pricing</div>
             </div>
             <div className="text-center">

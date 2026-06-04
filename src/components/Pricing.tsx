@@ -1,91 +1,84 @@
-import { Check } from 'lucide-react'
+import { Wifi, Zap, Wind, Volume2, Sofa, Car, Gift, Moon } from 'lucide-react'
+
+const slotAmenities = [
+  { icon: Wifi,     label: 'Fast WiFi' },
+  { icon: Zap,      label: 'Steady Power' },
+  { icon: Wind,     label: 'Air Conditioning' },
+  { icon: Volume2,  label: 'Quiet Zones' },
+  { icon: Sofa,     label: 'Lounge Access' },
+]
+
+const subscriptionPerks = [
+  { icon: Wifi,     label: 'Fast WiFi' },
+  { icon: Zap,      label: 'Steady Power' },
+  { icon: Wind,     label: 'Air Conditioning' },
+  { icon: Volume2,  label: 'Quiet Zones' },
+  { icon: Sofa,     label: 'Lounge Access' },
+  { icon: Car,      label: 'Free Parking' },
+  { icon: Gift,     label: 'Free Shawarma or Chicken & Chips' },
+]
 
 export default function Pricing() {
   const timeSlots = [
     {
-      name: 'Morning Plan',
+      name: 'Morning',
       time: '8AM – 12PM',
-      price: '₦2,000',
-      weeklyPrice: '₦8,000',
-      weeklySavings: '₦2,000',
+      price: '₦3,000',
       description: 'Perfect for early birds who love productive mornings',
-      features: [
-        'High-speed Wi-Fi',
-        'Comfortable seating',
-        'Light refreshments',
-        'Quiet environment',
-        'Natural lighting'
-      ],
       popular: false,
       color: 'from-blue-500 to-blue-600'
     },
     {
-      name: 'Afternoon Plan',
+      name: 'Afternoon',
       time: '12PM – 5PM',
-      price: '₦3,000',
-      weeklyPrice: '₦12,000',
-      weeklySavings: '₦3,000',
-      description: 'Our busiest time - great for networking and collaboration',
-      features: [
-        'High-speed Wi-Fi',
-        'Comfortable seating',
-        'Light refreshments',
-        'Networking opportunities',
-        'Community vibe'
-      ],
+      price: '₦4,000',
+      description: 'Great for networking and collaboration',
       popular: true,
       color: 'from-amber-500 to-orange-600'
     },
     {
-      name: 'Night Plan',
+      name: 'Night',
       time: '6PM – 6AM',
       price: '₦5,000',
-      weeklyPrice: '₦20,000',
-      weeklySavings: '₦5,000',
-      description: 'Designed for night owls, creatives, and deep work sessions',
-      features: [
-        'High-speed Wi-Fi',
-        'Comfortable seating',
-        'Light refreshments',
-        '12-hour access',
-        'Perfect for deep work'
-      ],
+      description: 'Ideal for night owls and deep work sessions',
       popular: false,
       color: 'from-purple-500 to-purple-600'
+    },
+    {
+      name: 'Full Day',
+      time: '8AM – 5PM',
+      price: '₦5,000',
+      description: 'Morning through afternoon in one pass',
+      popular: false,
+      color: 'from-teal-500 to-teal-600'
+    },
+    {
+      name: 'Hourly',
+      time: 'Per Hour',
+      price: '₦1,000',
+      description: 'Drop in and pay only for what you use',
+      popular: false,
+      color: 'from-green-500 to-green-600'
     }
   ]
 
   const membershipPlans = [
     {
-      name: 'Standard Membership',
-      price: '₦30,000',
-      description: 'Access to your chosen time slot with essential perks',
-      timeSlot: 'Morning, Afternoon, OR Night',
-      features: [
-        'Access to your chosen time slot (Morning, Afternoon, OR Night)',
-        'Consistent, dedicated workspace during your preferred hours',
-        'High-speed Wi-Fi and power outlets',
-        'Comfortable seating and work environment',
-        'Light refreshments included',
-        'Perfect for established routines and specific peak productivity times'
-      ],
+      name: 'Weekly',
+      price: '₦15,000',
+      duration: '7-day access',
       popular: false
     },
     {
-      name: 'Premium Membership',
+      name: 'Bi-Weekly',
+      price: '₦25,000',
+      duration: '15-day access',
+      popular: false
+    },
+    {
+      name: 'Monthly',
       price: '₦40,000',
-      description: '24/7 unlimited coworking access across ALL time slots',
-      timeSlot: '24/7 Unlimited Access',
-      features: [
-        '24/7 unlimited coworking access across ALL time slots',
-        'Complete flexibility to work whenever inspiration strikes',
-        'Reserved private work corners',
-        'Priority booking for all spaces',
-        'VIP member events and networking',
-        'Dedicated storage space',
-        'Member directory access',
-        'The ultimate choice for maximum productivity and convenience'
-      ],
+      duration: 'Full month',
       popular: true
     }
   ]
@@ -110,74 +103,55 @@ export default function Pricing() {
             Pay-As-You-Go Time Slots
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 pt-6">
             {timeSlots.map((slot, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl shadow-lg p-8 border-2 transition-all duration-300 hover:scale-105 ${
+                className={`relative bg-white rounded-2xl shadow-lg p-6 border-2 transition-all duration-300 hover:scale-105 ${
                   slot.popular
                     ? "border-amber-500"
                     : "border-gray-200 hover:border-amber-300"
                 }`}
               >
                 {slot.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <span className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-1.5 rounded-full text-xs font-semibold">
                       Most Popular
                     </span>
                   </div>
                 )}
 
-                <div className="text-center mb-6">
-                  <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                <div className="text-center">
+                  <h4 className="text-base font-bold text-gray-900 mb-1">
                     {slot.name}
                   </h4>
-                  <p className="text-lg text-gray-600 mb-4">{slot.time}</p>
+                  <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{slot.time}</p>
                   <div
-                    className={`text-4xl font-bold bg-gradient-to-r ${slot.color} bg-clip-text text-transparent mb-2`}
+                    className={`text-3xl font-bold bg-gradient-to-r ${slot.color} bg-clip-text text-transparent mb-3`}
                   >
                     {slot.price}
                   </div>
-                  <div className="text-sm text-gray-500 mb-3">
-                    <span className="font-semibold">
-                      Weekly Plan: {slot.weeklyPrice}
-                    </span>
-                    <span className="text-green-600 ml-2">
-                      (save {slot.weeklySavings})
-                    </span>
-                  </div>
-                  <p className="text-gray-600">{slot.description}</p>
+                  <p className="text-xs text-gray-500 leading-relaxed">{slot.description}</p>
                 </div>
+              </div>
+            ))}
+          </div>
 
-                <ul className="space-y-3 mb-8">
-                  {slot.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-700">
-                      <Check className="w-5 h-5 text-green-500 mr-3" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="https://forms.gle/X6XRufwUn7dJrNf76"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
-                    slot.popular
-                      ? "bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:shadow-lg hover:scale-105"
-                      : "border-2 border-gray-300 text-gray-700 hover:border-amber-500 hover:text-amber-600"
-                  }`}
-                >
-                  Book This Slot
-                </a>
+          {/* Shared amenities strip */}
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
+            {slotAmenities.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-2 text-sm text-gray-600">
+                <Icon className="w-4 h-4 text-amber-500" />
+                {label}
               </div>
             ))}
           </div>
 
           {/* Special Team Night Plan */}
           <div className="mt-12 hero-gradient rounded-2xl p-8 text-center text-white">
-            <h4 className="text-2xl font-bold mb-4">
-              🌙 Special Team Night Plan
+            <h4 className="text-2xl font-bold mb-4 flex items-center justify-center gap-2">
+              <Moon className="w-6 h-6" />
+              Special Team Night Plan
             </h4>
             <p className="text-lg mb-6">
               For groups of 10-14 users looking for collaborative evening
@@ -199,68 +173,54 @@ export default function Pricing() {
 
         {/* Membership Plans */}
         <div>
-          <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Monthly Membership Plans
+          <h3 className="text-3xl font-bold text-gray-900 text-center mb-4">
+            Subscription Plans
           </h3>
+          <p className="text-center text-gray-500 text-sm mb-12">All plans include 24/7 access</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto pt-6">
             {membershipPlans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl shadow-lg p-8 border-2 transition-all duration-300 hover:scale-105 ${
+                className={`relative bg-white rounded-2xl shadow-lg p-6 border-2 transition-all duration-300 hover:scale-105 ${
                   plan.popular
                     ? "border-amber-500"
                     : "border-gray-200 hover:border-amber-300"
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <span className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-1.5 rounded-full text-xs font-semibold">
                       Best Value
                     </span>
                   </div>
                 )}
 
                 <div className="text-center mb-6">
-                  <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h4 className="text-xl font-bold text-gray-900 mb-1">
                     {plan.name}
                   </h4>
-                  <div className="text-4xl font-bold gradient-text mb-2">
+                  <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{plan.duration}</p>
+                  <div className="text-3xl font-bold gradient-text mb-1">
                     {plan.price}
-                  </div>
-                  <p className="text-gray-600 mb-3">{plan.description}</p>
-                  <div
-                    className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${
-                      plan.popular
-                        ? "bg-amber-100 text-amber-800"
-                        : "bg-blue-100 text-blue-800"
-                    }`}
-                  >
-                    {plan.timeSlot}
                   </div>
                 </div>
 
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-700">
-                      <Check className="w-5 h-5 text-green-500 mr-3" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="/membership"
-                  className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
-                    plan.popular
-                      ? "bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:shadow-lg hover:scale-105"
-                      : "border-2 border-gray-300 text-gray-700 hover:border-amber-500 hover:text-amber-600"
-                  }`}
-                >
-                  Learn More
-                </a>
               </div>
             ))}
+          </div>
+
+          {/* Shared subscription perks strip */}
+          <div className="mt-8 max-w-5xl mx-auto">
+            <p className="text-center text-xs text-gray-400 uppercase tracking-widest mb-4">Everything included in every plan</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {subscriptionPerks.map(({ icon: Icon, label }) => (
+                <div key={label} className="flex items-center gap-2 text-sm text-gray-600">
+                  <Icon className="w-4 h-4 text-amber-500" />
+                  {label}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

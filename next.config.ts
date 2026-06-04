@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
     domains: [
       "source.unsplash.com",
       "images.unsplash.com",
-      "ext.same-assets.com",
       "ugc.same-assets.com",
+      "i.pravatar.cc",
     ],
     remotePatterns: [
       {
@@ -25,12 +25,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "ext.same-assets.com",
+        hostname: "ugc.same-assets.com",
         pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "ugc.same-assets.com",
+        hostname: "i.pravatar.cc",
         pathname: "/**",
       },
     ],

@@ -1,38 +1,40 @@
 import Image from 'next/image'
+import { Zap, Wallet, Wifi, Wind, Users, CalendarDays } from 'lucide-react'
+
+const features = [
+  {
+    icon: Zap,
+    title: 'Solar-Powered, Always On',
+    description: 'Reliable 24/7 power with our advanced solar energy system. No more NEPA frustrations.'
+  },
+  {
+    icon: Wallet,
+    title: 'Pay-As-You-Go Flexibility',
+    description: 'From ₦1K/hour to full-day slots at ₦3K, ₦4K, or ₦5K. Pay only for the time you actually use.'
+  },
+  {
+    icon: Wifi,
+    title: 'Stable Wi-Fi',
+    description: "High-speed internet that actually works. Because buffering shouldn't be part of your workflow."
+  },
+  {
+    icon: Wind,
+    title: 'Comfortable & Quiet',
+    description: 'AC-ventilated rooms designed for deep work. Thoughtfully designed for maximum productivity.'
+  },
+  {
+    icon: Users,
+    title: 'Like-Minded Community',
+    description: 'Connect with creators, founders, and professionals who value purpose and productivity.'
+  },
+  {
+    icon: CalendarDays,
+    title: 'Events & Networking',
+    description: 'Regular meetups, workshops, and networking events to grow your professional circle.'
+  }
+]
 
 export default function About() {
-  const features = [
-    {
-      icon: '⚡',
-      title: 'Solar-Powered, Always On',
-      description: 'Reliable 24/7 power with our advanced solar energy system. No more NEPA frustrations.'
-    },
-    {
-      icon: '💰',
-      title: 'Pay-As-You-Go Flexibility',
-      description: 'Choose from ₦2K, ₦3K, or ₦5K slots. Pay only for the time you actually use.'
-    },
-    {
-      icon: '📶',
-      title: 'Stable Wi-Fi',
-      description: 'High-speed internet that actually works. Because buffering shouldn\'t be part of your workflow.'
-    },
-    {
-      icon: '❄️',
-      title: 'Comfortable & Quiet',
-      description: 'AC-ventilated rooms designed for deep work. Thoughtfully designed for maximum productivity.'
-    },
-    {
-      icon: '🤝',
-      title: 'Like-Minded Community',
-      description: 'Connect with creators, founders, and professionals who value purpose and productivity.'
-    },
-    {
-      icon: '🎯',
-      title: 'Events & Networking',
-      description: 'Regular meetups, workshops, and networking events to grow your professional circle.'
-    }
-  ]
 
   return (
     <section id="about" className="py-20 bg-white">
@@ -73,12 +75,10 @@ export default function About() {
           <div className="relative">
             <div className="relative rounded-3xl overflow-hidden h-96">
               <Image
-                src="https://ext.same-assets.com/4043744079/2414604282.png"
+                src="/hub-front-view.webp"
                 alt="Built With Intention - Powered by Purpose"
-                width={600}
-                height={384}
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                // className="w-full h-96 object-cover"
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
               />
               {/* Dark overlay */}
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300" />
@@ -104,12 +104,16 @@ export default function About() {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
               <div
                 key={index}
                 className="bg-gray-50 rounded-2xl p-6 hover:bg-amber-50 transition-colors duration-300 card-hover"
               >
-                <div className="text-4xl mb-4">{feature.icon}</div>
+                <div className="mb-4">
+                  <Icon className="w-8 h-8 text-amber-500" />
+                </div>
                 <h4 className="text-xl font-semibold text-gray-900 mb-3">
                   {feature.title}
                 </h4>
@@ -117,7 +121,7 @@ export default function About() {
                   {feature.description}
                 </p>
               </div>
-            ))}
+            )})}
           </div>
         </div>
 

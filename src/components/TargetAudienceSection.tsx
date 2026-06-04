@@ -6,46 +6,46 @@ import Image from "next/image";
 const audienceTypes = [
   {
     name: "Digital Creators",
-    image: "https://ext.same-assets.com/4043744079/4113422493.jpeg",
+    image: "https://i.pravatar.cc/80?img=1",
   },
   {
     name: "Coffee Lovers",
-    image: "https://ext.same-assets.com/4043744079/305895449.jpeg",
+    image: "https://i.pravatar.cc/80?img=5",
   },
   {
     name: "Change Makers",
-    image: "https://ext.same-assets.com/4043744079/4002808463.jpeg",
+    image: "https://i.pravatar.cc/80?img=9",
   },
   {
     name: "Founders",
-    image: "https://ext.same-assets.com/4043744079/1326415159.jpeg",
+    image: "https://i.pravatar.cc/80?img=12",
   },
   {
     name: "Dreamers",
-    image: "https://ext.same-assets.com/4043744079/2206716433.jpeg",
+    image: "https://i.pravatar.cc/80?img=16",
   },
 ];
 
 const audienceTypes2 = [
   {
     name: "Students",
-    image: "https://ext.same-assets.com/4043744079/4113422493.jpeg",
+    image: "https://i.pravatar.cc/80?img=20",
   },
   {
     name: "Innovators",
-    image: "https://ext.same-assets.com/4043744079/305895449.jpeg",
+    image: "https://i.pravatar.cc/80?img=25",
   },
   {
     name: "Creative Thinkers",
-    image: "https://ext.same-assets.com/4043744079/4002808463.jpeg",
+    image: "https://i.pravatar.cc/80?img=30",
   },
   {
     name: "Idea Makers",
-    image: "https://ext.same-assets.com/4043744079/1326415159.jpeg",
+    image: "https://i.pravatar.cc/80?img=35",
   },
   {
     name: "Digital Nomads",
-    image: "https://ext.same-assets.com/4043744079/2206716433.jpeg",
+    image: "https://i.pravatar.cc/80?img=40",
   },
 ];
 
