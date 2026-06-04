@@ -268,7 +268,7 @@ export default function Contact() {
                 </div>
                 <div className="border-t pt-2 mt-2">
                   <div className="flex justify-between font-semibold text-gray-900">
-                    <span>24/7 Members</span>
+                    <span>24/7 Access</span>
                     <span>Always Open</span>
                   </div>
                 </div>
